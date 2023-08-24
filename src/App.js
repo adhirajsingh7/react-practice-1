@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import Video from "./components/Video";
+import './App.css'
+import videos from './data/Data'
+import PlayButton from "./components/PlayButton";
+const App = () => {
 
-function App() {
   return (
+    
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Hello</h1>
+      {
+        videos.map((video,key)=> 
+        <Video key={key}
+        id={video.id}
+        bgColor={video.bgColor}
+        title={video.title} 
+        channel={video.channel} 
+        views={video.views} 
+        time={video.time} 
+        verified={video.verified}/>)
+      }
+      <div style={{clear: 'both'}}>
+        <PlayButton message={'Play-Button'} onPlay={()=>console.log('Playy')} onPause={()=>console.log('Pause')}>Play</PlayButton>
+        {/* <PlayButton message={'Pause-Button'} onSmash={(e)=>alert(e)}>Pause</PlayButton> */}
+      </div>    
     </div>
+    
+    
   );
-}
+};
 
 export default App;
